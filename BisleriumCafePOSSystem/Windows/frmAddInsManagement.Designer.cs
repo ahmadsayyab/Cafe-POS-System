@@ -1,6 +1,6 @@
 ﻿namespace BisleriumCafePOSSystem.Windows
 {
-    partial class frmCoffeeManagement
+    partial class frmAddInsManagement
     {
         /// <summary>
         /// Required designer variable.
@@ -32,18 +32,18 @@
             this.lblMainHeading = new System.Windows.Forms.Label();
             this.pnltaskBar = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.lblCoffeeType = new System.Windows.Forms.Label();
-            this.lblCoffeePrice = new System.Windows.Forms.Label();
-            this.txtCoffeeType = new System.Windows.Forms.TextBox();
-            this.txtCoffeePrice = new System.Windows.Forms.TextBox();
+            this.lblAddinName = new System.Windows.Forms.Label();
+            this.lblAddinPrice = new System.Windows.Forms.Label();
+            this.txtAddinName = new System.Windows.Forms.TextBox();
+            this.txtAddinPrice = new System.Windows.Forms.TextBox();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
-            this.dgvCoffeeTypeData = new System.Windows.Forms.DataGridView();
+            this.dgvAddinsData = new System.Windows.Forms.DataGridView();
             this.btnBackToHomeScreen = new System.Windows.Forms.Button();
             this.pnlMainheading.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvCoffeeTypeData)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAddinsData)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlMainheading
@@ -53,18 +53,18 @@
             this.pnlMainheading.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlMainheading.Location = new System.Drawing.Point(0, 0);
             this.pnlMainheading.Name = "pnlMainheading";
-            this.pnlMainheading.Size = new System.Drawing.Size(515, 70);
-            this.pnlMainheading.TabIndex = 2;
+            this.pnlMainheading.Size = new System.Drawing.Size(494, 70);
+            this.pnlMainheading.TabIndex = 3;
             // 
             // lblMainHeading
             // 
             this.lblMainHeading.AutoSize = true;
             this.lblMainHeading.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMainHeading.Location = new System.Drawing.Point(153, 30);
+            this.lblMainHeading.Location = new System.Drawing.Point(135, 28);
             this.lblMainHeading.Name = "lblMainHeading";
-            this.lblMainHeading.Size = new System.Drawing.Size(223, 25);
+            this.lblMainHeading.Size = new System.Drawing.Size(234, 25);
             this.lblMainHeading.TabIndex = 0;
-            this.lblMainHeading.Text = "Coffee Management";
+            this.lblMainHeading.Text = "Add-ins Management";
             // 
             // pnltaskBar
             // 
@@ -72,72 +72,72 @@
             this.pnltaskBar.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.pnltaskBar.Location = new System.Drawing.Point(0, 469);
             this.pnltaskBar.Name = "pnltaskBar";
-            this.pnltaskBar.Size = new System.Drawing.Size(515, 15);
-            this.pnltaskBar.TabIndex = 3;
+            this.pnltaskBar.Size = new System.Drawing.Size(494, 15);
+            this.pnltaskBar.TabIndex = 4;
             // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 31.97492F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 68.02508F));
-            this.tableLayoutPanel1.Controls.Add(this.lblCoffeeType, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.lblCoffeePrice, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.txtCoffeeType, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.txtCoffeePrice, 1, 1);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(49, 89);
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 22.18182F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 77.81818F));
+            this.tableLayoutPanel1.Controls.Add(this.lblAddinName, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.lblAddinPrice, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.txtAddinName, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.txtAddinPrice, 1, 1);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(52, 92);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(406, 100);
-            this.tableLayoutPanel1.TabIndex = 4;
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(384, 100);
+            this.tableLayoutPanel1.TabIndex = 5;
             // 
-            // lblCoffeeType
+            // lblAddinName
             // 
-            this.lblCoffeeType.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.lblCoffeeType.AutoSize = true;
-            this.lblCoffeeType.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCoffeeType.Location = new System.Drawing.Point(3, 17);
-            this.lblCoffeeType.Name = "lblCoffeeType";
-            this.lblCoffeeType.Size = new System.Drawing.Size(92, 16);
-            this.lblCoffeeType.TabIndex = 0;
-            this.lblCoffeeType.Text = "Coffee Type";
+            this.lblAddinName.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.lblAddinName.AutoSize = true;
+            this.lblAddinName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAddinName.Location = new System.Drawing.Point(3, 17);
+            this.lblAddinName.Name = "lblAddinName";
+            this.lblAddinName.Size = new System.Drawing.Size(48, 16);
+            this.lblAddinName.TabIndex = 0;
+            this.lblAddinName.Text = "Name";
             // 
-            // lblCoffeePrice
+            // lblAddinPrice
             // 
-            this.lblCoffeePrice.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.lblCoffeePrice.AutoSize = true;
-            this.lblCoffeePrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCoffeePrice.Location = new System.Drawing.Point(3, 67);
-            this.lblCoffeePrice.Name = "lblCoffeePrice";
-            this.lblCoffeePrice.Size = new System.Drawing.Size(43, 16);
-            this.lblCoffeePrice.TabIndex = 0;
-            this.lblCoffeePrice.Text = "Price";
+            this.lblAddinPrice.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.lblAddinPrice.AutoSize = true;
+            this.lblAddinPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAddinPrice.Location = new System.Drawing.Point(3, 67);
+            this.lblAddinPrice.Name = "lblAddinPrice";
+            this.lblAddinPrice.Size = new System.Drawing.Size(43, 16);
+            this.lblAddinPrice.TabIndex = 0;
+            this.lblAddinPrice.Text = "Price";
             // 
-            // txtCoffeeType
+            // txtAddinName
             // 
-            this.txtCoffeeType.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.txtCoffeeType.Location = new System.Drawing.Point(132, 15);
-            this.txtCoffeeType.Name = "txtCoffeeType";
-            this.txtCoffeeType.Size = new System.Drawing.Size(256, 20);
-            this.txtCoffeeType.TabIndex = 0;
+            this.txtAddinName.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.txtAddinName.Location = new System.Drawing.Point(88, 15);
+            this.txtAddinName.Name = "txtAddinName";
+            this.txtAddinName.Size = new System.Drawing.Size(273, 20);
+            this.txtAddinName.TabIndex = 0;
             // 
-            // txtCoffeePrice
+            // txtAddinPrice
             // 
-            this.txtCoffeePrice.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.txtCoffeePrice.Location = new System.Drawing.Point(132, 65);
-            this.txtCoffeePrice.Name = "txtCoffeePrice";
-            this.txtCoffeePrice.Size = new System.Drawing.Size(256, 20);
-            this.txtCoffeePrice.TabIndex = 1;
-            this.txtCoffeePrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCoffeePrice_KeyPress);
+            this.txtAddinPrice.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.txtAddinPrice.Location = new System.Drawing.Point(88, 65);
+            this.txtAddinPrice.Name = "txtAddinPrice";
+            this.txtAddinPrice.Size = new System.Drawing.Size(273, 20);
+            this.txtAddinPrice.TabIndex = 1;
+            this.txtAddinPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAddinPrice_KeyPress);
             // 
             // btnAdd
             // 
             this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdd.Location = new System.Drawing.Point(122, 221);
+            this.btnAdd.Location = new System.Drawing.Point(140, 224);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(95, 28);
+            this.btnAdd.Size = new System.Drawing.Size(87, 27);
             this.btnAdd.TabIndex = 2;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
@@ -146,9 +146,9 @@
             // btnUpdate
             // 
             this.btnUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdate.Location = new System.Drawing.Point(235, 221);
+            this.btnUpdate.Location = new System.Drawing.Point(233, 224);
             this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(95, 28);
+            this.btnUpdate.Size = new System.Drawing.Size(87, 27);
             this.btnUpdate.TabIndex = 3;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = true;
@@ -157,63 +157,63 @@
             // btnDelete
             // 
             this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDelete.Location = new System.Drawing.Point(346, 221);
+            this.btnDelete.Location = new System.Drawing.Point(326, 224);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(95, 28);
+            this.btnDelete.Size = new System.Drawing.Size(87, 27);
             this.btnDelete.TabIndex = 4;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
-            // dgvCoffeeTypeData
+            // dgvAddinsData
             // 
-            this.dgvCoffeeTypeData.AllowUserToAddRows = false;
-            this.dgvCoffeeTypeData.AllowUserToDeleteRows = false;
-            this.dgvCoffeeTypeData.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvCoffeeTypeData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvCoffeeTypeData.Location = new System.Drawing.Point(59, 279);
-            this.dgvCoffeeTypeData.MultiSelect = false;
-            this.dgvCoffeeTypeData.Name = "dgvCoffeeTypeData";
-            this.dgvCoffeeTypeData.ReadOnly = true;
-            this.dgvCoffeeTypeData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvCoffeeTypeData.Size = new System.Drawing.Size(382, 150);
-            this.dgvCoffeeTypeData.TabIndex = 5;
-            this.dgvCoffeeTypeData.SelectionChanged += new System.EventHandler(this.dgvCoffeeTypeData_SelectionChanged);
+            this.dgvAddinsData.AllowUserToAddRows = false;
+            this.dgvAddinsData.AllowUserToDeleteRows = false;
+            this.dgvAddinsData.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvAddinsData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvAddinsData.Location = new System.Drawing.Point(58, 282);
+            this.dgvAddinsData.MultiSelect = false;
+            this.dgvAddinsData.Name = "dgvAddinsData";
+            this.dgvAddinsData.ReadOnly = true;
+            this.dgvAddinsData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvAddinsData.Size = new System.Drawing.Size(355, 150);
+            this.dgvAddinsData.TabIndex = 6;
+            this.dgvAddinsData.SelectionChanged += new System.EventHandler(this.dgvAddinsData_SelectionChanged);
             // 
             // btnBackToHomeScreen
             // 
             this.btnBackToHomeScreen.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBackToHomeScreen.Location = new System.Drawing.Point(59, 436);
+            this.btnBackToHomeScreen.Location = new System.Drawing.Point(58, 439);
             this.btnBackToHomeScreen.Name = "btnBackToHomeScreen";
-            this.btnBackToHomeScreen.Size = new System.Drawing.Size(382, 27);
-            this.btnBackToHomeScreen.TabIndex = 6;
+            this.btnBackToHomeScreen.Size = new System.Drawing.Size(355, 24);
+            this.btnBackToHomeScreen.TabIndex = 7;
             this.btnBackToHomeScreen.Text = "Back to Home Screen";
             this.btnBackToHomeScreen.UseVisualStyleBackColor = true;
             this.btnBackToHomeScreen.Click += new System.EventHandler(this.btnBackToHomeScreen_Click);
             // 
-            // frmCoffeeManagement
+            // frmAddInsManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(515, 484);
+            this.ClientSize = new System.Drawing.Size(494, 484);
             this.Controls.Add(this.btnBackToHomeScreen);
-            this.Controls.Add(this.dgvCoffeeTypeData);
+            this.Controls.Add(this.dgvAddinsData);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.pnltaskBar);
             this.Controls.Add(this.pnlMainheading);
-            this.Name = "frmCoffeeManagement";
+            this.Name = "frmAddInsManagement";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Coffee Management Window";
-            this.Load += new System.EventHandler(this.frmCoffeeManagement_Load);
+            this.Text = "AddIns Management";
+            this.Load += new System.EventHandler(this.frmAddInsManagement_Load);
             this.pnlMainheading.ResumeLayout(false);
             this.pnlMainheading.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvCoffeeTypeData)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAddinsData)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -224,14 +224,14 @@
         private System.Windows.Forms.Label lblMainHeading;
         private System.Windows.Forms.Panel pnltaskBar;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.Label lblCoffeeType;
-        private System.Windows.Forms.Label lblCoffeePrice;
-        private System.Windows.Forms.TextBox txtCoffeeType;
-        private System.Windows.Forms.TextBox txtCoffeePrice;
+        private System.Windows.Forms.Label lblAddinName;
+        private System.Windows.Forms.Label lblAddinPrice;
+        private System.Windows.Forms.TextBox txtAddinName;
+        private System.Windows.Forms.TextBox txtAddinPrice;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnDelete;
-        private System.Windows.Forms.DataGridView dgvCoffeeTypeData;
+        private System.Windows.Forms.DataGridView dgvAddinsData;
         private System.Windows.Forms.Button btnBackToHomeScreen;
     }
 }

@@ -24,5 +24,26 @@ namespace BisleriumCafePOSSystem.Windows
             coffeeManagement.ShowDialog();
             this.Close();
         }
+
+        private void btnAddInsManagement_Click(object sender, EventArgs e)
+        {
+            frmAddInsManagement addinsManagement = new frmAddInsManagement();
+            this.Hide();
+            addinsManagement.ShowDialog();
+            this.Close();
+        }
+
+        private void frmHome_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnTakeOrder_Click(object sender, EventArgs e)
+        {
+            frmSales sale = new frmSales();
+            this.Hide();
+            sale.ShowDialog();
+            this.Close();
+        }
     }
 }

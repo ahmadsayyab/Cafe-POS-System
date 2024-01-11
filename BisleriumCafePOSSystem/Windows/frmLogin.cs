@@ -14,11 +14,11 @@ namespace BisleriumCafePOSSystem.Windows
 {
     public partial class frmLogin : Form
     {
-        private readonly UserManager userManager;
+        private readonly UserService userService;
         public frmLogin()
         {
             InitializeComponent();
-            userManager = new UserManager();
+            userService = new UserService();
         }
 
         private void llbNotRegistered_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -41,10 +41,10 @@ namespace BisleriumCafePOSSystem.Windows
             {
                 var credentials = new Credentials
                 {
-                    Email = txtEmail.Text,
-                    Password =  txtPassword.Text
+                    Email = txtEmail.Text.Trim(),
+                    Password =  txtPassword.Text.Trim()
                 };
-                User user = userManager.ValidateLogin(credentials);
+                User user = userService.ValidateLogin(credentials);
 
                 if (user != null)
                 {

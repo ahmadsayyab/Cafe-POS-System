@@ -9,22 +9,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Xml.Linq;
 
 namespace BisleriumCafePOSSystem.Windows
 {
-    public partial class frmCoffeeManagement : Form
+    public partial class frmAddInsManagement : Form
     {
-        private readonly CoffeeService coffeeService;
-        private readonly Coffee coffee;
-        
-        int selectedCoffeeId;
-        public frmCoffeeManagement()
+        private readonly AddIn addIn;
+        private readonly AddInService addInService;
+
+        int selectedAddInId;
+        public frmAddInsManagement()
         {
             InitializeComponent();
-            coffeeService = new CoffeeService();
-            coffee = new Coffee();
+            addIn = new AddIn();
+            addInService = new AddInService();
         }
+
         //Ensure valid numeric inputs
         private void EnsureValidNumericInput(KeyPressEventArgs e)
         {
@@ -51,28 +51,51 @@ namespace BisleriumCafePOSSystem.Windows
             }
         }
 
-        private void txtCoffeePrice_KeyPress(object sender, KeyPressEventArgs e)
+        private void txtAddinPrice_KeyPress(object sender, KeyPressEventArgs e)
         {
             EnsureValidNumericInput(e);
         }
 
-        private void RefreshCoffeeDataGrid()
+
+        private void RefreshAddInDataGrid()
         {
-  
-            dgvCoffeeTypeData.Rows.Clear();
+            dgvAddinsData.Rows.Clear();
 
-            var coffees = coffeeService.LoadCoffees();
+            var addIns = addInService.LoadAddIns();
 
-            foreach (var coffee in coffees)
+            foreach (var addIn in addIns)
             {
-                dgvCoffeeTypeData.Rows.Add(coffee.Id,coffee.Name, coffee.Price);
+                dgvAddinsData.Rows.Add(addIn.Id, addIn.Name, addIn.Price);
             }
         }
 
-        //add coffee type
+        private void ResetFields()
+        {
+            txtAddinName.Clear();
+            txtAddinPrice.Clear();
+        }
+        //load proudct data into datagridview
+        void BindGridView()
+        {
+            selectedAddInId = dgvAddinsData.Columns.Add("Id", "ID");
+            dgvAddinsData.Columns[selectedAddInId].Visible = false;
+            dgvAddinsData.Columns.Add("Name", "Coffee Name");
+            dgvAddinsData.Columns.Add("Price", "Price");
+            RefreshAddInDataGrid();
+
+        }
+
+
+        private void frmAddInsManagement_Load(object sender, EventArgs e)
+        {
+            BindGridView();
+            dgvAddinsData.ClearSelection();
+        }
+
+        //Add addIn
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            if (txtCoffeePrice.Text == string.Empty || txtCoffeePrice.Text == string.Empty)
+            if (txtAddinName.Text == string.Empty || txtAddinPrice.Text == string.Empty)
             {
                 MessageBox.Show("Please fill both the fields!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
@@ -81,25 +104,25 @@ namespace BisleriumCafePOSSystem.Windows
             {
                 try
                 {
-                    string coffeeType = txtCoffeeType.Text.Trim();
+                    string addInName = txtAddinName.Text.Trim();
 
                     // Check if the add-in with the same name already exists
-                    if (coffeeService.coffees.Any(a => a.Name.Equals(coffeeType, StringComparison.OrdinalIgnoreCase)))
+                    if (addInService.addIns.Any(a => a.Name.Equals(addInName, StringComparison.OrdinalIgnoreCase)))
                     {
-                        MessageBox.Show("Coffee type with this name already exists. Please use a different name.", "Duplicate Name", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("An add-in with this name already exists. Please use a different name.", "Duplicate Name", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
-                    Coffee newCoffee = new Coffee
+
+                    AddIn newAddIn = new AddIn
                     {
-                        Name = txtCoffeeType.Text.Trim(),
-                        Price = decimal.Parse(txtCoffeePrice.Text.Trim())
+                        Name = txtAddinName.Text.Trim(),
+                        Price = decimal.Parse(txtAddinPrice.Text.Trim())
+                        
                     };
-
-                    coffeeService.AddCoffee(newCoffee);
-                    MessageBox.Show("Coffee added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    RefreshCoffeeDataGrid();
+                    addInService.AddAddIn(newAddIn);
+                    MessageBox.Show("Add-in added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    RefreshAddInDataGrid();
                     ResetFields();
-
 
                 }
                 catch (Exception ex)
@@ -109,66 +132,43 @@ namespace BisleriumCafePOSSystem.Windows
             }
         }
 
-        private void ResetFields()
+        private void dgvAddinsData_SelectionChanged(object sender, EventArgs e)
         {
-            txtCoffeeType.Clear();
-            txtCoffeePrice.Clear();
             
-        }
-        //load proudct data into datagridview
-        void BindGridView()
-        {
-            selectedCoffeeId = dgvCoffeeTypeData.Columns.Add("Id", "ID");
-            dgvCoffeeTypeData.Columns[selectedCoffeeId].Visible = false;
-            dgvCoffeeTypeData.Columns.Add("Name", "Coffee Name");
-            dgvCoffeeTypeData.Columns.Add("Price", "Price");
-            RefreshCoffeeDataGrid();
-            
-        }
-        private void frmCoffeeManagement_Load(object sender, EventArgs e)
-        {
-            BindGridView();
-            dgvCoffeeTypeData.ClearSelection();
-        }
-
-        
-        private void dgvCoffeeTypeData_SelectionChanged(object sender, EventArgs e)
-        {
-           
-            if (dgvCoffeeTypeData.SelectedRows.Count > 0)
+            if (dgvAddinsData.SelectedRows.Count > 0)
             {
-                DataGridViewRow selectedRow = dgvCoffeeTypeData.SelectedRows[0];
+                DataGridViewRow selectedRow = dgvAddinsData.SelectedRows[0];
 
 
-                selectedCoffeeId = Convert.ToInt32(selectedRow.Cells[0].Value);
-                txtCoffeeType.Text = selectedRow.Cells[1].Value.ToString();
-                txtCoffeePrice.Text = selectedRow.Cells[2].Value.ToString();
+                selectedAddInId = Convert.ToInt32(selectedRow.Cells[0].Value);
+                txtAddinName.Text = selectedRow.Cells[1].Value.ToString();
+                txtAddinPrice.Text = selectedRow.Cells[2].Value.ToString();
 
             }
             else
             {
-                txtCoffeeType.Text = "";
-                txtCoffeePrice.Text = "";
+                txtAddinName.Text = "";
+                txtAddinPrice.Text = "";
             }
-
-
         }
-        //update coffee data
+
+
+        //Update Add-in
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            if (txtCoffeeType.Text == string.Empty || txtCoffeePrice.Text == string.Empty)
+            if (txtAddinName.Text == string.Empty || txtAddinPrice.Text == string.Empty)
             {
                 MessageBox.Show("Please first select a row which you want to be updated!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             else
             {
-                //coffee.Name = txtCoffeeType.Text.Trim();
-                coffee.Price =Convert.ToDecimal(txtCoffeePrice.Text.Trim());
-               
+                //addIn.Name = txtAddinName.Text.Trim();
+              
+                addIn.Price = Convert.ToDecimal(txtAddinPrice.Text.Trim());
 
                 decimal newPrice;
-                if (!decimal.TryParse(txtCoffeePrice.Text.Trim(), out newPrice))
+                if (!decimal.TryParse(txtAddinPrice.Text.Trim(), out newPrice))
                 {
                     MessageBox.Show("Please enter a valid price.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
@@ -178,26 +178,23 @@ namespace BisleriumCafePOSSystem.Windows
                 string adminPassword = PromptForPassword();
                 if (adminPassword == null)
                 {
-                    MessageBox.Show("Update Cancelled.");
+                    MessageBox.Show("Update Cancelled","Cancel", MessageBoxButtons.OK,MessageBoxIcon.Information);
                     return;
                 }
 
                 // Verify Password 
                 if (!IsAdminPasswordCorrect(adminPassword))
                 {
-                    MessageBox.Show("Incorrect Password" , "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Incorrect Password", "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
-                
-                UpdateCoffeePrice(selectedCoffeeId, newPrice); 
-                MessageBox.Show("Price updated successfully.","Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                UpdateAddInPrice(selectedAddInId, newPrice);
+                MessageBox.Show("Price updated successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 ResetFields();
             }
-           
-
         }
-
 
         //propmt for password
         private string PromptForPassword()
@@ -227,30 +224,31 @@ namespace BisleriumCafePOSSystem.Windows
         //match the password
         private bool IsAdminPasswordCorrect(string inputPassword)
         {
-            string adminPassword = Properties.Settings.Default.coffeePricePass; 
+            string adminPassword = Properties.Settings.Default.addinPricePass;
             return inputPassword == adminPassword;
         }
 
-        public void UpdateCoffeePrice(int coffeeId, decimal newPrice)
+        public void UpdateAddInPrice(int addInId, decimal newPrice)
         {
-            var coffeeToUpdate = coffeeService.coffees.FirstOrDefault(c => c.Id == coffeeId);
-            if (coffeeToUpdate != null)
+            var addInToUpdate = addInService.addIns.FirstOrDefault(c => c.Id == addInId);
+            if (addInToUpdate != null)
             {
-                coffeeToUpdate.Price = newPrice;
-                coffeeService.SaveCoffees();
-                RefreshCoffeeDataGrid();
+                addInToUpdate.Price = newPrice;
+                addInService.SaveAddIn();
+                RefreshAddInDataGrid();
             }
             else
             {
-                MessageBox.Show("Coffee not found.","Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Add-in not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
 
-        //delete coffee 
+
+        //delete add-in
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            if (dgvCoffeeTypeData.SelectedRows.Count > 0)
+            if (dgvAddinsData.SelectedRows.Count > 0)
             {
                 var confirmResult = MessageBox.Show("Are you sure to delete this item?",
                                                     "Confirm Delete",
@@ -260,9 +258,9 @@ namespace BisleriumCafePOSSystem.Windows
                 if (confirmResult == DialogResult.Yes)
                 {
 
-                    selectedCoffeeId = Convert.ToInt32(dgvCoffeeTypeData.SelectedRows[0].Cells["Id"].Value);
-                    DeleteCoffee(selectedCoffeeId);
-                    RefreshCoffeeDataGrid();
+                    selectedAddInId = Convert.ToInt32(dgvAddinsData.SelectedRows[0].Cells["Id"].Value);
+                    DeleteAddIn(selectedAddInId);
+                    RefreshAddInDataGrid();
                 }
             }
             else
@@ -271,18 +269,18 @@ namespace BisleriumCafePOSSystem.Windows
             }
         }
 
-        private void DeleteCoffee(int id)
+        private void DeleteAddIn(int id)
         {
-            var coffeeToDelete = coffeeService.coffees.FirstOrDefault(c => c.Id == id);
-            if (coffeeToDelete != null)
+            var addInToDelete = addInService.addIns.FirstOrDefault(c => c.Id == id);
+            if (addInToDelete != null)
             {
-                coffeeService.coffees.Remove(coffeeToDelete);
-                coffeeService.SaveCoffees();
+                addInService.addIns.Remove(addInToDelete);
+                addInService.SaveAddIn();
                 ResetFields();
             }
             else
             {
-                MessageBox.Show("Coffee not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Add-in not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

@@ -16,11 +16,11 @@ namespace BisleriumCafePOSSystem
 {
     public partial class frmMain : Form
     {
-        private readonly UserManager userManager;
+        private readonly UserService userManager;
         public frmMain()
         {
             InitializeComponent();
-            userManager = new UserManager();
+            userManager = new UserService();
         }
 
         string email_pattern = "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$";
@@ -165,12 +165,12 @@ namespace BisleriumCafePOSSystem
 
                     User newUser = new User
                     {
-                        FullName = txtFullName.Text,
+                        FullName = txtFullName.Text.Trim(),
                         Gender = cmbGender.SelectedItem.ToString(),
-                        Role = txtRole.Text,
-                        Email = txtEmail.Text,
-                        PhoneNumber = txtPhoneNumber.Text,
-                        Password = txtPassword.Text
+                        Role = txtRole.Text.Trim(),
+                        Email = txtEmail.Text.Trim(),
+                        PhoneNumber = txtPhoneNumber.Text.Trim(),
+                        Password = txtPassword.Text.Trim()
                     };
 
 

@@ -10,12 +10,12 @@ using System.Xml;
 
 namespace BisleriumCafePOSSystem.Core.Services
 {
-    public class UserManager
+    public class UserService
     {
         private readonly string filePath = "users.json";
         private List<User> users;
 
-        public UserManager()
+        public UserService()
         {
             users = LoadUsers();
         }

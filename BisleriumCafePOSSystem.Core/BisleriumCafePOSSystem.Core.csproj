@@ -45,10 +45,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="Model\AddIn.cs" />
+    <Compile Include="Model\Coffee.cs" />
     <Compile Include="Model\Credentials.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\UserManager.cs" />
+    <Compile Include="Services\AddInService.cs" />
+    <Compile Include="Services\CoffeeService.cs" />
+    <Compile Include="Services\UserService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
