@@ -27,6 +27,23 @@ namespace BisleriumCafePOSSystem.Core.Services
             SaveMembers();
         }
 
+        //..
+        public Member GetMemberByPhoneNumber(string phoneNumber)
+        {
+            return members.FirstOrDefault(m => m.PhoneNumber == phoneNumber);
+        }
+
+        public void UpdateMemberPurchaseHistory(int memberId, DateTime purchaseDate)
+        {
+            var member = members.FirstOrDefault(m => m.Id == memberId);
+            if (member != null && !member.PurchaseHistory.Contains(purchaseDate.Date))
+            {
+                member.PurchaseHistory.Add(purchaseDate.Date);
+                SaveMembers();
+            }
+        }
+
+        //..
         public void SaveMembers()
         {
             string json = JsonConvert.SerializeObject(members, Newtonsoft.Json.Formatting.Indented);
@@ -45,16 +62,6 @@ namespace BisleriumCafePOSSystem.Core.Services
         }
 
 
-        //helper 
-        public void RecordPurchase(Member member)
-        {
-            member.PurchaseCount++;
-            SaveMembers();
-        }
-
-        public Member GetMemberByPhoneNumber(string phoneNumber)
-        {
-            return members.FirstOrDefault(m => m.PhoneNumber == phoneNumber);
-        }
+       
     }
 }

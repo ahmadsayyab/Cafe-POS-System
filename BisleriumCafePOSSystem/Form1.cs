@@ -175,18 +175,11 @@ namespace BisleriumCafePOSSystem
 
 
                     userManager.AddUser(newUser);
+                    frmHome home = new frmHome();
+                    this.Hide();
+                    home.ShowDialog();
+                    this.Close();
 
-                    MessageBox.Show("Signup successful!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    DialogResult confirm = MessageBox.Show("Do you want to login?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                    if (confirm == DialogResult.Yes)
-                    {
-                        frmLogin login = new frmLogin();
-                        this.Hide();
-                        login.ShowDialog();
-                        this.Close();
-                    }
-                    ResetControls();
                 }
                 catch (Exception ex)
                 {
