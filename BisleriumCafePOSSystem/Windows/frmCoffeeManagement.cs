@@ -67,6 +67,8 @@ namespace BisleriumCafePOSSystem.Windows
             {
                 dgvCoffeeTypeData.Rows.Add(coffee.Id,coffee.Name, coffee.Price);
             }
+
+            dgvCoffeeTypeData.ClearSelection();
         }
 
         //add coffee type

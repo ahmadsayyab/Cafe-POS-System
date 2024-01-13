@@ -11,7 +11,7 @@ namespace BisleriumCafePOSSystem.Core.Services
 {
     public class AddInService
     {
-        private readonly string filePath = "addIns.json";
+        public readonly string filePath = "addIns.json";
         public List<AddIn> addIns;
 
         public AddInService()

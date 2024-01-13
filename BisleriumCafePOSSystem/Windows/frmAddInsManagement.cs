@@ -67,6 +67,8 @@ namespace BisleriumCafePOSSystem.Windows
             {
                 dgvAddinsData.Rows.Add(addIn.Id, addIn.Name, addIn.Price);
             }
+
+            dgvAddinsData.ClearSelection();
         }
 
         private void ResetFields()

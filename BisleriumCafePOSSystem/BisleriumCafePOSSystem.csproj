@@ -78,6 +78,12 @@
     <Compile Include="Windows\frmLogin.Designer.cs">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="Windows\frmMemberManagement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Windows\frmMemberManagement.Designer.cs">
+      <DependentUpon>frmMemberManagement.cs</DependentUpon>
+    </Compile>
     <Compile Include="Windows\frmSales.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -103,6 +109,9 @@
     <EmbeddedResource Include="Windows\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Windows\frmMemberManagement.resx">
+      <DependentUpon>frmMemberManagement.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Windows\frmSales.resx">
       <DependentUpon>frmSales.cs</DependentUpon>
     </EmbeddedResource>
@@ -124,6 +133,11 @@
       <Project>{ee290833-86bc-463a-b6fb-6da0d0f4b0cc}</Project>
       <Name>BisleriumCafePOSSystem.Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\addins.jpg" />
+    <Resource Include="Resources\Coffee.jpg" />
+    <Content Include="Resources\coffee.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

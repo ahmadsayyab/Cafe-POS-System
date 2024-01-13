@@ -45,5 +45,13 @@ namespace BisleriumCafePOSSystem.Windows
             sale.ShowDialog();
             this.Close();
         }
+
+        private void btnAddMember_Click(object sender, EventArgs e)
+        {
+            frmMemberManagement memberManagement = new frmMemberManagement();
+            this.Hide();
+            memberManagement.ShowDialog();
+            this.Close();
+        }
     }
 }
