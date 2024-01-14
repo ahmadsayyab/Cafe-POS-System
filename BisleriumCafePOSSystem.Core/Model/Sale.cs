@@ -8,9 +8,10 @@ namespace BisleriumCafePOSSystem.Core.Model
 {
     public class Sale
     {
-        public int SaleId { get; set; }
+        public int Id { get; set; }
         public string CoffeeType { get; set; }
 
+        public string Name { get; set; }
         public string PhoneNumber { get; set; }
         public int Quantity { get; set; }
         public DateTime Date { get; set; }

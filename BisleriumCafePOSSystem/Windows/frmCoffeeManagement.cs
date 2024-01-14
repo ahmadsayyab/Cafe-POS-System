@@ -94,7 +94,7 @@ namespace BisleriumCafePOSSystem.Windows
                     Coffee newCoffee = new Coffee
                     {
                         Name = txtCoffeeType.Text.Trim(),
-                        Price = decimal.Parse(txtCoffeePrice.Text.Trim())
+                        Price = double.Parse(txtCoffeePrice.Text.Trim())
                     };
 
                     coffeeService.AddCoffee(newCoffee);
@@ -166,11 +166,11 @@ namespace BisleriumCafePOSSystem.Windows
             else
             {
                 //coffee.Name = txtCoffeeType.Text.Trim();
-                coffee.Price =Convert.ToDecimal(txtCoffeePrice.Text.Trim());
+                coffee.Price =Convert.ToDouble(txtCoffeePrice.Text.Trim());
                
 
-                decimal newPrice;
-                if (!decimal.TryParse(txtCoffeePrice.Text.Trim(), out newPrice))
+                double newPrice;
+                if (!double.TryParse(txtCoffeePrice.Text.Trim(), out newPrice))
                 {
                     MessageBox.Show("Please enter a valid price.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
@@ -233,7 +233,7 @@ namespace BisleriumCafePOSSystem.Windows
             return inputPassword == adminPassword;
         }
 
-        public void UpdateCoffeePrice(int coffeeId, decimal newPrice)
+        public void UpdateCoffeePrice(int coffeeId, double newPrice)
         {
             var coffeeToUpdate = coffeeService.coffees.FirstOrDefault(c => c.Id == coffeeId);
             if (coffeeToUpdate != null)

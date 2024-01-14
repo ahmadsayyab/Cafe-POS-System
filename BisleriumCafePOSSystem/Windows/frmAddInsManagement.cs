@@ -118,7 +118,7 @@ namespace BisleriumCafePOSSystem.Windows
                     AddIn newAddIn = new AddIn
                     {
                         Name = txtAddinName.Text.Trim(),
-                        Price = decimal.Parse(txtAddinPrice.Text.Trim())
+                        Price = double.Parse(txtAddinPrice.Text.Trim())
                         
                     };
                     addInService.AddAddIn(newAddIn);
@@ -167,10 +167,10 @@ namespace BisleriumCafePOSSystem.Windows
             {
                 //addIn.Name = txtAddinName.Text.Trim();
               
-                addIn.Price = Convert.ToDecimal(txtAddinPrice.Text.Trim());
+                addIn.Price = Convert.ToDouble(txtAddinPrice.Text.Trim());
 
-                decimal newPrice;
-                if (!decimal.TryParse(txtAddinPrice.Text.Trim(), out newPrice))
+                double newPrice;
+                if (!double.TryParse(txtAddinPrice.Text.Trim(), out newPrice))
                 {
                     MessageBox.Show("Please enter a valid price.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
@@ -230,7 +230,7 @@ namespace BisleriumCafePOSSystem.Windows
             return inputPassword == adminPassword;
         }
 
-        public void UpdateAddInPrice(int addInId, decimal newPrice)
+        public void UpdateAddInPrice(int addInId, double newPrice)
         {
             var addInToUpdate = addInService.addIns.FirstOrDefault(c => c.Id == addInId);
             if (addInToUpdate != null)

@@ -13,6 +13,8 @@ namespace BisleriumCafePOSSystem.Core.Services
     {
         private readonly string filePath = "coffee.json";
         public List<Coffee> coffees;
+        
+
 
         public CoffeeService()
         {
@@ -44,5 +46,21 @@ namespace BisleriumCafePOSSystem.Core.Services
             string json = JsonConvert.SerializeObject(coffees, Formatting.Indented);
             File.WriteAllText(filePath, json);
         }
+
+
+        public double GetPrice(string coffeeName)
+        {
+            var coffee = coffees.FirstOrDefault(c => c.Name.Equals(coffeeName));
+            if (coffee != null)
+            {
+                return  coffee.Price;
+            }
+            else
+            {
+                throw new KeyNotFoundException($"No coffee found with name: {coffeeName}");
+            }
+        }
+
+
     }
 }

@@ -1,4 +1,5 @@
-﻿using BisleriumCafePOSSystem.Core.Services;
+﻿using BisleriumCafePOSSystem.Core.Model;
+using BisleriumCafePOSSystem.Core.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,11 +16,13 @@ namespace BisleriumCafePOSSystem.Windows
     {
         private readonly AddInService addInService;
         private readonly CoffeeService coffeeService;
+        private readonly SaleService saleService;
         public frmSales()
         {
             InitializeComponent();
             addInService = new AddInService();
             coffeeService = new CoffeeService();
+            saleService = new SaleService(new MemberService(), addInService, coffeeService);
         }
 
         //Ensure valid string inputs
@@ -111,6 +114,8 @@ namespace BisleriumCafePOSSystem.Windows
         {
             PopulateCheckedListBox();
             PopulateCombobox();
+            BindGridView();
+           
         }
 
         private void btnBackToHomePage_Click(object sender, EventArgs e)
@@ -120,5 +125,112 @@ namespace BisleriumCafePOSSystem.Windows
             home.ShowDialog();
             this.Close();
         }
+
+        private void btnAddToSale_Click(object sender, EventArgs e)
+        {
+            if (cmbCoffeeTypes.SelectedItem == null)
+            {
+                MessageBox.Show("Please select a coffee type.", "Input Required", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(txtCustomerName.Text))
+            {
+                MessageBox.Show("Please enter the customer's name.", "Input Required", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(txtCustomerPhoneNumber.Text))
+            {
+                MessageBox.Show("Please enter the customer's phone number.", "Input Required", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (nudCoffeeQuantity.Value == 0)
+            {
+                MessageBox.Show("Please specify the coffee quantity.", "Input Required", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (!GetSelectedAddIns().Any())
+            {
+                MessageBox.Show("Please select at least one add-in.", "Input Required", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            try
+            {
+                Sale sale = new Sale
+                {
+                    CoffeeType = cmbCoffeeTypes.SelectedItem?.ToString(),
+                    Name = txtCustomerName.Text.Trim(),
+                    PhoneNumber = txtCustomerPhoneNumber.Text.Trim(),
+                    Quantity = Convert.ToInt32(nudCoffeeQuantity.Value),
+                    Date = dtpOrderDate.Value,
+                    AddIns = GetSelectedAddIns(),
+                };
+
+                saleService.ProcessSale(sale);
+
+                
+                saleService.AddSale(sale);
+                MessageBox.Show("Sale added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                
+                ResetFields();
+
+                txtTotalBill.Text = sale.TotalBill.ToString();
+                txtDiscount.Text = sale.Discount.ToString();
+                UpdateDataGridView(sale);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}");
+            }
+        }
+
+        private List<string> GetSelectedAddIns()
+        {
+            var selectedAddIns = new List<string>();
+
+            
+            foreach (var item in cklCoffeeAddIns.CheckedItems)
+            {
+                selectedAddIns.Add(item.ToString());
+            }
+
+            return selectedAddIns;
+        }
+
+
+        void BindGridView()
+        {
+
+            dgvSales.Columns.Add("Name", "Customer Name");
+            dgvSales.Columns.Add("Type", "Coffee Type");
+            dgvSales.Columns.Add("Quantity", "Quantity");
+            dgvSales.Columns.Add("Bill", "Total Bill");
+            dgvSales.Columns.Add("Discount", "Discount");
+            dgvSales.Columns.Add("Date", "Order Date");
+            
+
+        }
+
+        private void UpdateDataGridView(Sale sale)
+        {
+            dgvSales.Rows.Add(
+                sale.Name,
+                sale.CoffeeType,
+                sale.Quantity,
+                sale.TotalBill.ToString("C"),
+                sale.Discount.ToString("C"),
+                sale.Date
+            );
+        }
+
+        private void ResetFields()
+        {
+            cmbCoffeeTypes.SelectedItem = null;
+            txtCustomerName.Clear();
+            txtCustomerPhoneNumber.Clear();
+            nudCoffeeQuantity.Value = 0;
+            dtpOrderDate.Value = DateTime.Now;
+           
+        }
+
     }
 }

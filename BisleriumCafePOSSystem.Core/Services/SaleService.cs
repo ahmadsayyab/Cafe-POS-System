@@ -15,7 +15,7 @@ namespace BisleriumCafePOSSystem.Core.Services
         private readonly string filePath = "sales.json";
         private MemberService memberService;
 
-        // Assuming these services are available for fetching prices
+       
         private AddInService addInService;
         private CoffeeService coffeeService;
 
@@ -27,97 +27,103 @@ namespace BisleriumCafePOSSystem.Core.Services
             sales = LoadSales() ?? new List<Sale>();
         }
 
-        //public void ProcessSale(Sale sale)
-        //{
-        //    Member member = memberService.GetMemberByPhoneNumber(sale.PhoneNumber);
+        public void ProcessSale(Sale sale)
+        {
+    
 
-        //    if (member != null)
-        //    {
-        //        if (member.MembershipType == "Regular" && IsRegularEligible(member, sale.Date))
-        //        {
-        //            sale.Discount = CalculateRegularMemberDiscount(sale.TotalBill);
-        //        }
-        //        else if (member.MembershipType == "Basic")
-        //        {
-        //            if (IsEligibleForFreeCoffee(member))
-        //            {
-        //                // Apply free coffee logic
-        //            }
-        //        }
+            Member member = memberService.GetMemberByPhoneNumber(sale.PhoneNumber);
 
-        //        memberService.UpdateMemberPurchaseHistory(member.Id, sale.Date);
-        //    }
+            if (member != null)
+            {
+                
+                UpdateMemberPurchaseHistory(member, sale.Date);
 
-        //    sale.TotalBill -= sale.Discount;
-        //    sales.Add(sale);
-        //    SaveSales();
-        //}
+                
+                if (member.MembershipType == "Regular" && IsRegularEligible(member, sale.Date))
+                {
+                    sale.Discount = CalculateRegularMemberDiscount(sale.TotalBill);
+                }
+                else if (member.MembershipType == "Basic" && IsEligibleForFreeCoffee(member))
+                {
 
-        //private double CalculateInitialBill(Sale sale)
-        //{
-        //    double bill = 0.0;
+                    double coffeePrice = coffeeService.GetPrice(sale.CoffeeType);
+                    double addInsPrice = sale.AddIns.Sum(addIn => addInService.GetPrice(addIn)) * sale.Quantity;
 
-        //    bill += coffeeService.GetPrice(sale.CoffeeType) * sale.Quantity;
-        //    bill += sale.AddIns.Sum(addIn => addInService.GetPrice(addIn));
+                    
+                    sale.Discount = coffeePrice + addInsPrice;
+                }
+            }
 
-        //    // Assuming tax rate is a constant, e.g., 10%
-        //    const double taxRate = 0.10;
-        //    bill *= (1 + taxRate);
+            sale.TotalBill = CalculateInitialBill(sale) - sale.Discount;
+            SaveSale();
 
-        //    return bill;
-        //}
+        }
 
-        //private double ApplyDiscountsAndOffers(Sale sale, Member member, double totalBill)
-        //{
-        //    switch (member.MembershipType)
-        //    {
-        //        case "Regular":
-        //            if (IsRegularEligible(member, sale.Date))
-        //            {
-        //                totalBill *= 0.90; // 10% discount
-        //            }
-        //            break;
-        //        case "Basic":
-        //            if (member.PurchaseHistory.Count % 10 == 0) // Every 10th purchase
-        //            {
-        //                totalBill = 0; // Free coffee
-        //            }
-        //            break;
-        //    }
-        //    return totalBill;
-        //}
+        private double CalculateRegularMemberDiscount(double totalBill)
+        {
+           
+            const double discountRate = 0.10;
+            return totalBill * discountRate;
+        }
+        private double CalculateInitialBill(Sale sale)
+        {
+            double bill = 0.0;
 
-        //private bool IsRegularEligible(Member member, DateTime currentDate)
-        //{
-        //    // Define the start of the month
-        //    DateTime startOfMonth = new DateTime(currentDate.Year, currentDate.Month, 1);
+            bill += coffeeService.GetPrice(sale.CoffeeType) * sale.Quantity;
+           
+            bill += sale.AddIns.Sum(addIn => addInService.GetPrice(addIn)) * sale.Quantity;
 
-        //    // Iterate through each day of the current month up to the current date
-        //    for (DateTime date = startOfMonth; date <= currentDate; date = date.AddDays(1))
-        //    {
-        //        // Skip weekends
-        //        if (date.DayOfWeek == DayOfWeek.Saturday || date.DayOfWeek == DayOfWeek.Sunday)
-        //            continue;
+            return bill;
+        }
 
-        //        // Check if the member made a purchase on this day
-        //        if (!member.PurchaseHistory.Contains(date))
-        //            return false;
-        //    }
+        private bool IsRegularEligible(Member member, DateTime currentDate)
+        {
+            
+            DateTime startOfMonth = new DateTime(currentDate.Year, currentDate.Month, 1);
 
-        //    return true; // Eligible if purchases were made every weekday of the month
-        //}
+            
+            for (DateTime date = startOfMonth; date <= currentDate; date = date.AddDays(1))
+            {
+                // Skip weekends
+                if (date.DayOfWeek == DayOfWeek.Saturday || date.DayOfWeek == DayOfWeek.Sunday)
+                    continue;
 
-        //private void UpdateMemberPurchaseHistory(Member member, DateTime purchaseDate)
-        //{
-        //    // Avoid adding duplicate entries for the same day
-        //    if (!member.PurchaseHistory.Contains(purchaseDate.Date))
-        //    {
-        //        member.PurchaseHistory.Add(purchaseDate.Date);
-        //        memberService.SaveMembers();
-        //    }
-        //}
+                
+                if (!member.PurchaseHistory.Contains(date))
+                    return false;
+            }
+
+            return true; 
+        }
+
+        private bool IsEligibleForFreeCoffee(Member member)
+        {
+            return member.PurchaseCount % 10 == 1;
+        }
+
+  
+
+        private void UpdateMemberPurchaseHistory(Member member, DateTime purchaseDate)
+        {
+            if (!member.PurchaseHistory.Contains(purchaseDate.Date))
+            {
+                member.PurchaseHistory.Add(purchaseDate.Date);
+            }
+
+            member.PurchaseCount++; 
+            memberService.SaveMembers();
+        }
+        public void AddSale(Sale newSale)
+        {
+            // Increment the ID
+            newSale.Id = sales.Any() ? sales.Max(u => u.Id) + 1 : 1;
 
 
+            sales.Add(newSale);
+
+
+            SaveSale();
+        }
         public void SaveSale()
         {
             string json = JsonConvert.SerializeObject(sales, Newtonsoft.Json.Formatting.Indented);

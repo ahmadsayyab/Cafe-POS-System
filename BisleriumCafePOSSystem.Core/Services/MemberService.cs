@@ -33,15 +33,15 @@ namespace BisleriumCafePOSSystem.Core.Services
             return members.FirstOrDefault(m => m.PhoneNumber == phoneNumber);
         }
 
-        public void UpdateMemberPurchaseHistory(int memberId, DateTime purchaseDate)
-        {
-            var member = members.FirstOrDefault(m => m.Id == memberId);
-            if (member != null && !member.PurchaseHistory.Contains(purchaseDate.Date))
-            {
-                member.PurchaseHistory.Add(purchaseDate.Date);
-                SaveMembers();
-            }
-        }
+        //public void UpdateMemberPurchaseHistory(int memberId, DateTime purchaseDate)
+        //{
+        //    var member = members.FirstOrDefault(m => m.Id == memberId);
+        //    if (member != null && !member.PurchaseHistory.Contains(purchaseDate.Date))
+        //    {
+        //        member.PurchaseHistory.Add(purchaseDate.Date);
+        //        SaveMembers();
+        //    }
+        //}
 
         //..
         public void SaveMembers()

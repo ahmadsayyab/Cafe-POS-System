@@ -123,14 +123,14 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(435, 168);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(435, 200);
             this.tableLayoutPanel1.TabIndex = 6;
             // 
             // lblTotalBill
             // 
             this.lblTotalBill.AutoSize = true;
             this.lblTotalBill.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalBill.Location = new System.Drawing.Point(3, 138);
+            this.lblTotalBill.Location = new System.Drawing.Point(3, 168);
             this.lblTotalBill.Name = "lblTotalBill";
             this.lblTotalBill.Size = new System.Drawing.Size(69, 16);
             this.lblTotalBill.TabIndex = 10;
@@ -141,7 +141,7 @@
             this.lblChooseCoffeeType.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lblChooseCoffeeType.AutoSize = true;
             this.lblChooseCoffeeType.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblChooseCoffeeType.Location = new System.Drawing.Point(3, 3);
+            this.lblChooseCoffeeType.Location = new System.Drawing.Point(3, 6);
             this.lblChooseCoffeeType.Name = "lblChooseCoffeeType";
             this.lblChooseCoffeeType.Size = new System.Drawing.Size(92, 16);
             this.lblChooseCoffeeType.TabIndex = 0;
@@ -152,7 +152,7 @@
             this.lblName.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lblName.AutoSize = true;
             this.lblName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblName.Location = new System.Drawing.Point(3, 26);
+            this.lblName.Location = new System.Drawing.Point(3, 34);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(48, 16);
             this.lblName.TabIndex = 0;
@@ -163,7 +163,7 @@
             this.lblPhoneNumber.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lblPhoneNumber.AutoSize = true;
             this.lblPhoneNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPhoneNumber.Location = new System.Drawing.Point(3, 49);
+            this.lblPhoneNumber.Location = new System.Drawing.Point(3, 62);
             this.lblPhoneNumber.Name = "lblPhoneNumber";
             this.lblPhoneNumber.Size = new System.Drawing.Size(109, 16);
             this.lblPhoneNumber.TabIndex = 0;
@@ -174,7 +174,7 @@
             this.lblQuantity.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lblQuantity.AutoSize = true;
             this.lblQuantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblQuantity.Location = new System.Drawing.Point(3, 72);
+            this.lblQuantity.Location = new System.Drawing.Point(3, 90);
             this.lblQuantity.Name = "lblQuantity";
             this.lblQuantity.Size = new System.Drawing.Size(63, 16);
             this.lblQuantity.TabIndex = 0;
@@ -194,7 +194,7 @@
             // txtCustomerName
             // 
             this.txtCustomerName.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.txtCustomerName.Location = new System.Drawing.Point(127, 26);
+            this.txtCustomerName.Location = new System.Drawing.Point(127, 32);
             this.txtCustomerName.Name = "txtCustomerName";
             this.txtCustomerName.Size = new System.Drawing.Size(272, 20);
             this.txtCustomerName.TabIndex = 2;
@@ -203,7 +203,7 @@
             // txtCustomerPhoneNumber
             // 
             this.txtCustomerPhoneNumber.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.txtCustomerPhoneNumber.Location = new System.Drawing.Point(127, 49);
+            this.txtCustomerPhoneNumber.Location = new System.Drawing.Point(127, 60);
             this.txtCustomerPhoneNumber.Name = "txtCustomerPhoneNumber";
             this.txtCustomerPhoneNumber.Size = new System.Drawing.Size(272, 20);
             this.txtCustomerPhoneNumber.TabIndex = 2;
@@ -212,7 +212,7 @@
             // nudCoffeeQuantity
             // 
             this.nudCoffeeQuantity.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.nudCoffeeQuantity.Location = new System.Drawing.Point(127, 72);
+            this.nudCoffeeQuantity.Location = new System.Drawing.Point(127, 88);
             this.nudCoffeeQuantity.Name = "nudCoffeeQuantity";
             this.nudCoffeeQuantity.Size = new System.Drawing.Size(272, 20);
             this.nudCoffeeQuantity.TabIndex = 3;
@@ -222,7 +222,7 @@
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(3, 95);
+            this.label1.Location = new System.Drawing.Point(3, 118);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(40, 16);
             this.label1.TabIndex = 0;
@@ -231,7 +231,7 @@
             // dtpOrderDate
             // 
             this.dtpOrderDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpOrderDate.Location = new System.Drawing.Point(127, 95);
+            this.dtpOrderDate.Location = new System.Drawing.Point(127, 115);
             this.dtpOrderDate.Name = "dtpOrderDate";
             this.dtpOrderDate.Size = new System.Drawing.Size(272, 20);
             this.dtpOrderDate.TabIndex = 4;
@@ -240,7 +240,7 @@
             // 
             this.lblDiscount.AutoSize = true;
             this.lblDiscount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDiscount.Location = new System.Drawing.Point(3, 115);
+            this.lblDiscount.Location = new System.Drawing.Point(3, 140);
             this.lblDiscount.Name = "lblDiscount";
             this.lblDiscount.Size = new System.Drawing.Size(67, 16);
             this.lblDiscount.TabIndex = 10;
@@ -248,14 +248,14 @@
             // 
             // txtDiscount
             // 
-            this.txtDiscount.Location = new System.Drawing.Point(127, 118);
+            this.txtDiscount.Location = new System.Drawing.Point(127, 143);
             this.txtDiscount.Name = "txtDiscount";
             this.txtDiscount.Size = new System.Drawing.Size(272, 20);
             this.txtDiscount.TabIndex = 11;
             // 
             // txtTotalBill
             // 
-            this.txtTotalBill.Location = new System.Drawing.Point(127, 141);
+            this.txtTotalBill.Location = new System.Drawing.Point(127, 171);
             this.txtTotalBill.Name = "txtTotalBill";
             this.txtTotalBill.Size = new System.Drawing.Size(272, 20);
             this.txtTotalBill.TabIndex = 11;
@@ -279,6 +279,7 @@
             this.btnAddToSale.TabIndex = 5;
             this.btnAddToSale.Text = "Add to Sale";
             this.btnAddToSale.UseVisualStyleBackColor = true;
+            this.btnAddToSale.Click += new System.EventHandler(this.btnAddToSale_Click);
             // 
             // dgvSales
             // 

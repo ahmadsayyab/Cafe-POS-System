@@ -44,5 +44,22 @@ namespace BisleriumCafePOSSystem.Core.Services
             string json = JsonConvert.SerializeObject(addIns, Formatting.Indented);
             File.WriteAllText(filePath, json);
         }
+
+
+        public double GetPrice(string addInName)
+        {
+            var addIn = addIns.FirstOrDefault(a => a.Name.Equals(addInName, StringComparison.OrdinalIgnoreCase));
+            return addIn != null ? addIn.Price : 0;
+        }
+
+        public double GetTotalPriceForSelectedAddIns(IEnumerable<string> selectedAddInNames)
+        {
+            double totalPrice = 0;
+            foreach (var name in selectedAddInNames)
+            {
+                totalPrice += GetPrice(name);
+            }
+            return totalPrice;
+        }
     }
 }

@@ -15,10 +15,12 @@ namespace BisleriumCafePOSSystem.Core.Model
         public string MembershipType { get; set; }
 
         public List<DateTime> PurchaseHistory { get; set; }
+        public int PurchaseCount { get; set; }
 
         public Member()
         {
             PurchaseHistory = new List<DateTime>();
+            PurchaseCount = 0;
         }
 
 
