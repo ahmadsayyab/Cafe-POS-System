@@ -37,6 +37,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnTakeOrder = new System.Windows.Forms.Button();
             this.btnAddMember = new System.Windows.Forms.Button();
+            this.btnGenerateReport = new System.Windows.Forms.Button();
             this.pnlMainheading.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -74,7 +75,7 @@
             // btnManagCoffeeTypes
             // 
             this.btnManagCoffeeTypes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnManagCoffeeTypes.Location = new System.Drawing.Point(158, 120);
+            this.btnManagCoffeeTypes.Location = new System.Drawing.Point(158, 167);
             this.btnManagCoffeeTypes.Name = "btnManagCoffeeTypes";
             this.btnManagCoffeeTypes.Size = new System.Drawing.Size(192, 29);
             this.btnManagCoffeeTypes.TabIndex = 2;
@@ -85,7 +86,7 @@
             // btnAddInsManagement
             // 
             this.btnAddInsManagement.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddInsManagement.Location = new System.Drawing.Point(158, 173);
+            this.btnAddInsManagement.Location = new System.Drawing.Point(158, 217);
             this.btnAddInsManagement.Name = "btnAddInsManagement";
             this.btnAddInsManagement.Size = new System.Drawing.Size(192, 29);
             this.btnAddInsManagement.TabIndex = 1;
@@ -113,7 +114,7 @@
             // btnTakeOrder
             // 
             this.btnTakeOrder.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTakeOrder.Location = new System.Drawing.Point(158, 281);
+            this.btnTakeOrder.Location = new System.Drawing.Point(158, 119);
             this.btnTakeOrder.Name = "btnTakeOrder";
             this.btnTakeOrder.Size = new System.Drawing.Size(192, 28);
             this.btnTakeOrder.TabIndex = 0;
@@ -124,7 +125,7 @@
             // btnAddMember
             // 
             this.btnAddMember.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddMember.Location = new System.Drawing.Point(158, 228);
+            this.btnAddMember.Location = new System.Drawing.Point(158, 268);
             this.btnAddMember.Name = "btnAddMember";
             this.btnAddMember.Size = new System.Drawing.Size(192, 29);
             this.btnAddMember.TabIndex = 3;
@@ -132,12 +133,23 @@
             this.btnAddMember.UseVisualStyleBackColor = true;
             this.btnAddMember.Click += new System.EventHandler(this.btnAddMember_Click);
             // 
+            // btnGenerateReport
+            // 
+            this.btnGenerateReport.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGenerateReport.Location = new System.Drawing.Point(158, 320);
+            this.btnGenerateReport.Name = "btnGenerateReport";
+            this.btnGenerateReport.Size = new System.Drawing.Size(192, 28);
+            this.btnGenerateReport.TabIndex = 4;
+            this.btnGenerateReport.Text = "Generate Report";
+            this.btnGenerateReport.UseVisualStyleBackColor = true;
+            // 
             // frmHome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(530, 450);
+            this.Controls.Add(this.btnGenerateReport);
             this.Controls.Add(this.btnAddMember);
             this.Controls.Add(this.btnTakeOrder);
             this.Controls.Add(this.btnAddInsManagement);
@@ -167,5 +179,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button btnTakeOrder;
         private System.Windows.Forms.Button btnAddMember;
+        private System.Windows.Forms.Button btnGenerateReport;
     }
 }

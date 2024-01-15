@@ -11,7 +11,7 @@ namespace BisleriumCafePOSSystem.Core.Model
         public int Id { get; set; }
         public string Name { get; set; }
         public string PhoneNumber { get; set; }
-        public string JoininDate { get; set; }
+        public string JoiningDate { get; set; }
         public string MembershipType { get; set; }
 
         public List<DateTime> PurchaseHistory { get; set; }

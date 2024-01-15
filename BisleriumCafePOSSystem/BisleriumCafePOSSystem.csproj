@@ -33,6 +33,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.9.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
+      <HintPath>..\packages\BouncyCastle.1.8.9\lib\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.5.13.3, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.13.3\lib\itextsharp.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -60,11 +66,23 @@
     <Compile Include="Windows\frmAddInsManagement.Designer.cs">
       <DependentUpon>frmAddInsManagement.cs</DependentUpon>
     </Compile>
+    <Compile Include="Windows\frmCheckOut.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Windows\frmCheckOut.Designer.cs">
+      <DependentUpon>frmCheckOut.cs</DependentUpon>
+    </Compile>
     <Compile Include="Windows\frmCoffeeManagement.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Windows\frmCoffeeManagement.Designer.cs">
       <DependentUpon>frmCoffeeManagement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\frmGenerateReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Windows\frmGenerateReport.Designer.cs">
+      <DependentUpon>frmGenerateReport.cs</DependentUpon>
     </Compile>
     <Compile Include="Windows\frmHome.cs">
       <SubType>Form</SubType>
@@ -84,6 +102,12 @@
     <Compile Include="Windows\frmMemberManagement.Designer.cs">
       <DependentUpon>frmMemberManagement.cs</DependentUpon>
     </Compile>
+    <Compile Include="Windows\frmPayment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Windows\frmPayment.Designer.cs">
+      <DependentUpon>frmPayment.cs</DependentUpon>
+    </Compile>
     <Compile Include="Windows\frmSales.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -100,8 +124,14 @@
     <EmbeddedResource Include="Windows\frmAddInsManagement.resx">
       <DependentUpon>frmAddInsManagement.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Windows\frmCheckOut.resx">
+      <DependentUpon>frmCheckOut.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Windows\frmCoffeeManagement.resx">
       <DependentUpon>frmCoffeeManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\frmGenerateReport.resx">
+      <DependentUpon>frmGenerateReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Windows\frmHome.resx">
       <DependentUpon>frmHome.cs</DependentUpon>
@@ -112,9 +142,13 @@
     <EmbeddedResource Include="Windows\frmMemberManagement.resx">
       <DependentUpon>frmMemberManagement.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Windows\frmPayment.resx">
+      <DependentUpon>frmPayment.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Windows\frmSales.resx">
       <DependentUpon>frmSales.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -133,11 +167,6 @@
       <Project>{ee290833-86bc-463a-b6fb-6da0d0f4b0cc}</Project>
       <Name>BisleriumCafePOSSystem.Core</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\addins.jpg" />
-    <Resource Include="Resources\Coffee.jpg" />
-    <Content Include="Resources\coffee.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

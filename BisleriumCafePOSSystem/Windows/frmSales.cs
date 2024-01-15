@@ -232,5 +232,59 @@ namespace BisleriumCafePOSSystem.Windows
            
         }
 
+
+        //Extract Data from datagridview
+
+        private List<Sale> ExtractSalesDetailsFromGrid()
+        {
+            var details = new List<Sale>();
+
+            foreach (DataGridViewRow row in dgvSales.Rows)
+            {
+                if (row.IsNewRow) continue; // Skip the new row at the bottom
+
+                var detail = new Sale();
+
+                detail.Name = row.Cells["Name"].Value?.ToString();
+                detail.CoffeeType = row.Cells["Type"].Value?.ToString();
+
+                if (int.TryParse(row.Cells["Quantity"].Value?.ToString(), out int quantity))
+                {
+                    detail.Quantity = quantity;
+                }
+
+                if (double.TryParse(row.Cells["Bill"].Value?.ToString(), out double totalBill))
+                {
+                    detail.TotalBill = totalBill;
+                }
+
+                if (double.TryParse(row.Cells["Discount"].Value?.ToString(), out double discount))
+                {
+                    detail.Discount = discount;
+                }
+
+                if (DateTime.TryParse(row.Cells["Date"].Value?.ToString(), out DateTime date))
+                {
+                    detail.Date = date;
+                }
+
+                details.Add(detail);
+            }
+
+            return details;
+        }
+
+
+        private void btnProceedSale_Click(object sender, EventArgs e)
+        {
+            var salesDetails = ExtractSalesDetailsFromGrid();
+            var grandTotal =Convert.ToDecimal(txtTotalBill.Text);
+            var discount = Convert.ToDecimal(txtDiscount.Text);
+            
+            frmCheckOut checkOut = new frmCheckOut(salesDetails, grandTotal, discount);
+            this.Hide();
+            checkOut.ShowDialog();
+            this.Close();
+        }
     }
 }

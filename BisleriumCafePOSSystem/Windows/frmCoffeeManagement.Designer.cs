@@ -207,7 +207,7 @@
             this.Controls.Add(this.pnlMainheading);
             this.Name = "frmCoffeeManagement";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Coffee Management Window";
+            this.Text = "Coffee Management";
             this.Load += new System.EventHandler(this.frmCoffeeManagement_Load);
             this.pnlMainheading.ResumeLayout(false);
             this.pnlMainheading.PerformLayout();

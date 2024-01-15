@@ -51,6 +51,7 @@
             this.btnAddToSale = new System.Windows.Forms.Button();
             this.dgvSales = new System.Windows.Forms.DataGridView();
             this.btnBackToHomePage = new System.Windows.Forms.Button();
+            this.btnProceedSale = new System.Windows.Forms.Button();
             this.pnlMainheading.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudCoffeeQuantity)).BeginInit();
@@ -64,7 +65,7 @@
             this.pnlMainheading.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlMainheading.Location = new System.Drawing.Point(0, 0);
             this.pnlMainheading.Name = "pnlMainheading";
-            this.pnlMainheading.Size = new System.Drawing.Size(751, 70);
+            this.pnlMainheading.Size = new System.Drawing.Size(730, 70);
             this.pnlMainheading.TabIndex = 3;
             // 
             // lblMainHeading
@@ -83,7 +84,7 @@
             this.pnltaskBar.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.pnltaskBar.Location = new System.Drawing.Point(0, 610);
             this.pnltaskBar.Name = "pnltaskBar";
-            this.pnltaskBar.Size = new System.Drawing.Size(751, 15);
+            this.pnltaskBar.Size = new System.Drawing.Size(730, 15);
             this.pnltaskBar.TabIndex = 4;
             // 
             // cklCoffeeAddIns
@@ -273,7 +274,7 @@
             // btnAddToSale
             // 
             this.btnAddToSale.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddToSale.Location = new System.Drawing.Point(247, 364);
+            this.btnAddToSale.Location = new System.Drawing.Point(368, 364);
             this.btnAddToSale.Name = "btnAddToSale";
             this.btnAddToSale.Size = new System.Drawing.Size(116, 28);
             this.btnAddToSale.TabIndex = 5;
@@ -291,7 +292,7 @@
             this.dgvSales.Name = "dgvSales";
             this.dgvSales.ReadOnly = true;
             this.dgvSales.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvSales.Size = new System.Drawing.Size(411, 150);
+            this.dgvSales.Size = new System.Drawing.Size(399, 150);
             this.dgvSales.TabIndex = 8;
             // 
             // btnBackToHomePage
@@ -299,18 +300,30 @@
             this.btnBackToHomePage.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBackToHomePage.Location = new System.Drawing.Point(241, 564);
             this.btnBackToHomePage.Name = "btnBackToHomePage";
-            this.btnBackToHomePage.Size = new System.Drawing.Size(411, 30);
+            this.btnBackToHomePage.Size = new System.Drawing.Size(399, 30);
             this.btnBackToHomePage.TabIndex = 9;
             this.btnBackToHomePage.Text = "Back to Home Page";
             this.btnBackToHomePage.UseVisualStyleBackColor = true;
             this.btnBackToHomePage.Click += new System.EventHandler(this.btnBackToHomePage_Click);
+            // 
+            // btnProceedSale
+            // 
+            this.btnProceedSale.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnProceedSale.Location = new System.Drawing.Point(505, 364);
+            this.btnProceedSale.Name = "btnProceedSale";
+            this.btnProceedSale.Size = new System.Drawing.Size(135, 28);
+            this.btnProceedSale.TabIndex = 10;
+            this.btnProceedSale.Text = "Proceed Sale";
+            this.btnProceedSale.UseVisualStyleBackColor = true;
+            this.btnProceedSale.Click += new System.EventHandler(this.btnProceedSale_Click);
             // 
             // frmSales
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(751, 625);
+            this.ClientSize = new System.Drawing.Size(730, 625);
+            this.Controls.Add(this.btnProceedSale);
             this.Controls.Add(this.btnBackToHomePage);
             this.Controls.Add(this.dgvSales);
             this.Controls.Add(this.btnAddToSale);
@@ -359,5 +372,6 @@
         private System.Windows.Forms.Label lblTotalBill;
         private System.Windows.Forms.TextBox txtDiscount;
         private System.Windows.Forms.TextBox txtTotalBill;
+        private System.Windows.Forms.Button btnProceedSale;
     }
 }

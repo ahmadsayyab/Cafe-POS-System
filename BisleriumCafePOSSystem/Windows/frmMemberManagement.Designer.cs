@@ -57,7 +57,7 @@
             this.pnlMainheading.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlMainheading.Location = new System.Drawing.Point(0, 0);
             this.pnlMainheading.Name = "pnlMainheading";
-            this.pnlMainheading.Size = new System.Drawing.Size(549, 70);
+            this.pnlMainheading.Size = new System.Drawing.Size(578, 70);
             this.pnlMainheading.TabIndex = 4;
             // 
             // lblMainHeading
@@ -76,7 +76,7 @@
             this.pnltaskBar.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.pnltaskBar.Location = new System.Drawing.Point(0, 505);
             this.pnltaskBar.Name = "pnltaskBar";
-            this.pnltaskBar.Size = new System.Drawing.Size(549, 15);
+            this.pnltaskBar.Size = new System.Drawing.Size(578, 15);
             this.pnltaskBar.TabIndex = 5;
             // 
             // tableLayoutPanel1
@@ -99,7 +99,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(423, 141);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(451, 141);
             this.tableLayoutPanel1.TabIndex = 6;
             // 
             // lblName
@@ -149,18 +149,18 @@
             // txtMemberName
             // 
             this.txtMemberName.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.txtMemberName.Location = new System.Drawing.Point(151, 7);
+            this.txtMemberName.Location = new System.Drawing.Point(161, 7);
             this.txtMemberName.Name = "txtMemberName";
-            this.txtMemberName.Size = new System.Drawing.Size(248, 20);
+            this.txtMemberName.Size = new System.Drawing.Size(277, 20);
             this.txtMemberName.TabIndex = 0;
             this.txtMemberName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMemberName_KeyPress);
             // 
             // txtMemberContact
             // 
             this.txtMemberContact.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.txtMemberContact.Location = new System.Drawing.Point(151, 42);
+            this.txtMemberContact.Location = new System.Drawing.Point(161, 42);
             this.txtMemberContact.Name = "txtMemberContact";
-            this.txtMemberContact.Size = new System.Drawing.Size(248, 20);
+            this.txtMemberContact.Size = new System.Drawing.Size(277, 20);
             this.txtMemberContact.TabIndex = 1;
             this.txtMemberContact.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMemberContact_KeyPress);
             // 
@@ -168,9 +168,9 @@
             // 
             this.dtpJoiningDate.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.dtpJoiningDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpJoiningDate.Location = new System.Drawing.Point(151, 77);
+            this.dtpJoiningDate.Location = new System.Drawing.Point(161, 77);
             this.dtpJoiningDate.Name = "dtpJoiningDate";
-            this.dtpJoiningDate.Size = new System.Drawing.Size(248, 20);
+            this.dtpJoiningDate.Size = new System.Drawing.Size(277, 20);
             this.dtpJoiningDate.TabIndex = 2;
             // 
             // cmbMembershipTypes
@@ -182,15 +182,15 @@
             this.cmbMembershipTypes.Items.AddRange(new object[] {
             "Regular",
             "Basic"});
-            this.cmbMembershipTypes.Location = new System.Drawing.Point(151, 112);
+            this.cmbMembershipTypes.Location = new System.Drawing.Point(161, 112);
             this.cmbMembershipTypes.Name = "cmbMembershipTypes";
-            this.cmbMembershipTypes.Size = new System.Drawing.Size(248, 21);
+            this.cmbMembershipTypes.Size = new System.Drawing.Size(277, 21);
             this.cmbMembershipTypes.TabIndex = 3;
             // 
             // btnAdd
             // 
             this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdd.Location = new System.Drawing.Point(201, 258);
+            this.btnAdd.Location = new System.Drawing.Point(215, 258);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(88, 30);
             this.btnAdd.TabIndex = 4;
@@ -201,7 +201,7 @@
             // btnUpdate
             // 
             this.btnUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdate.Location = new System.Drawing.Point(295, 258);
+            this.btnUpdate.Location = new System.Drawing.Point(310, 258);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(88, 30);
             this.btnUpdate.TabIndex = 5;
@@ -212,7 +212,7 @@
             // btnDelete
             // 
             this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDelete.Location = new System.Drawing.Point(389, 258);
+            this.btnDelete.Location = new System.Drawing.Point(404, 258);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(88, 30);
             this.btnDelete.TabIndex = 6;
@@ -230,7 +230,7 @@
             this.dgvMembers.Name = "dgvMembers";
             this.dgvMembers.ReadOnly = true;
             this.dgvMembers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvMembers.Size = new System.Drawing.Size(417, 150);
+            this.dgvMembers.Size = new System.Drawing.Size(432, 150);
             this.dgvMembers.TabIndex = 7;
             this.dgvMembers.SelectionChanged += new System.EventHandler(this.dgvMembers_SelectionChanged);
             // 
@@ -250,7 +250,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(549, 520);
+            this.ClientSize = new System.Drawing.Size(578, 520);
             this.Controls.Add(this.btnBackToHomePage);
             this.Controls.Add(this.dgvMembers);
             this.Controls.Add(this.btnDelete);

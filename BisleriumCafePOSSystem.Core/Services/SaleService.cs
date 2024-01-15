@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -45,12 +46,13 @@ namespace BisleriumCafePOSSystem.Core.Services
                 }
                 else if (member.MembershipType == "Basic" && IsEligibleForFreeCoffee(member))
                 {
-
                     double coffeePrice = coffeeService.GetPrice(sale.CoffeeType);
-                    double addInsPrice = sale.AddIns.Sum(addIn => addInService.GetPrice(addIn)) * sale.Quantity;
 
-                    
-                    sale.Discount = coffeePrice + addInsPrice;
+                    double addInsPriceForOneCoffee = sale.AddIns.Sum(addIn => addInService.GetPrice(addIn));
+
+                    double totalPriceForOneCoffee = coffeePrice + addInsPriceForOneCoffee;
+
+                    sale.Discount = totalPriceForOneCoffee;
                 }
             }
 
@@ -76,26 +78,50 @@ namespace BisleriumCafePOSSystem.Core.Services
             return bill;
         }
 
+
+        //.....
         private bool IsRegularEligible(Member member, DateTime currentDate)
         {
-            
-            DateTime startOfMonth = new DateTime(currentDate.Year, currentDate.Month, 1);
-
-            
-            for (DateTime date = startOfMonth; date <= currentDate; date = date.AddDays(1))
+            if (member.JoiningDate != null)
             {
-                // Skip weekends
-                if (date.DayOfWeek == DayOfWeek.Saturday || date.DayOfWeek == DayOfWeek.Sunday)
-                    continue;
-
-                
-                if (!member.PurchaseHistory.Contains(date))
+                if (!DateTime.TryParse(member.JoiningDate, out DateTime joiningDate))
+                {
+                    
                     return false;
+                }
+
+                if (joiningDate.Date == currentDate.Date)
+                {
+                    // Member is eligible on the joining date
+                    return true;
+                }
             }
 
-            return true; 
+            // If it's a weekend, return false
+            if (currentDate.DayOfWeek == DayOfWeek.Saturday || currentDate.DayOfWeek == DayOfWeek.Sunday)
+            {
+                return false;
+            }
+
+            // Check for a purchase on the previous business day
+            DateTime previousBusinessDay = GetPreviousBusinessDay(currentDate);
+            return member.PurchaseHistory.Any(purchaseDate => purchaseDate.Date == previousBusinessDay.Date);
         }
 
+        private DateTime GetPreviousBusinessDay(DateTime currentDate)
+        {
+            DateTime previousDay = currentDate.AddDays(-1);
+
+            while (previousDay.DayOfWeek == DayOfWeek.Saturday || previousDay.DayOfWeek == DayOfWeek.Sunday)
+            {
+                previousDay = previousDay.AddDays(-1);
+            }
+
+            return previousDay;
+        }
+
+
+        //....
         private bool IsEligibleForFreeCoffee(Member member)
         {
             return member.PurchaseCount % 10 == 1;

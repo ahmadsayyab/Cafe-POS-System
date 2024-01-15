@@ -124,7 +124,7 @@ namespace BisleriumCafePOSSystem.Windows
                         Name = txtMemberName.Text.Trim(),
                         PhoneNumber = txtMemberContact.Text.Trim(),
                         
-                        JoininDate = dtpJoiningDate.Value.ToString("yyyy-MM-dd"),
+                        JoiningDate = dtpJoiningDate.Value.ToString("yyyy-MM-dd"),
                         MembershipType = cmbMembershipTypes.SelectedItem.ToString()
                     };
                    
@@ -154,7 +154,7 @@ namespace BisleriumCafePOSSystem.Windows
 
             foreach (var member in members)
             {
-                dgvMembers.Rows.Add(member.Id, member.Name, member.PhoneNumber, member.JoininDate,member.MembershipType);
+                dgvMembers.Rows.Add(member.Id, member.Name, member.PhoneNumber, member.JoiningDate,member.MembershipType);
             }
             dgvMembers.ClearSelection();
         }
@@ -229,7 +229,7 @@ namespace BisleriumCafePOSSystem.Windows
                 {
                     memberToUpdate.Name = txtMemberName.Text.Trim();
                     memberToUpdate.PhoneNumber = txtMemberContact.Text.Trim();
-                    memberToUpdate.JoininDate = dtpJoiningDate.Value.ToString("yyyy-MM-dd");
+                    memberToUpdate.JoiningDate = dtpJoiningDate.Value.ToString("yyyy-MM-dd");
                     memberToUpdate.MembershipType = cmbMembershipTypes.SelectedItem.ToString();
 
                     memberService.SaveMembers();  
