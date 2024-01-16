@@ -53,5 +53,13 @@ namespace BisleriumCafePOSSystem.Windows
             memberManagement.ShowDialog();
             this.Close();
         }
+
+        private void btnGenerateReport_Click(object sender, EventArgs e)
+        {
+            frmGenerateReport generateReport = new frmGenerateReport();
+            this.Hide();
+            generateReport.ShowDialog();
+            this.Close();
+        }
     }
 }

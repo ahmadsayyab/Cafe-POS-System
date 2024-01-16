@@ -161,7 +161,7 @@ namespace BisleriumCafePOSSystem.Windows
                     Name = txtCustomerName.Text.Trim(),
                     PhoneNumber = txtCustomerPhoneNumber.Text.Trim(),
                     Quantity = Convert.ToInt32(nudCoffeeQuantity.Value),
-                    Date = dtpOrderDate.Value,
+                    Date = dtpOrderDate.Value.Date,
                     AddIns = GetSelectedAddIns(),
                 };
 

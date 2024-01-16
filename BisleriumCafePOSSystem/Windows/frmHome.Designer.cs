@@ -78,7 +78,7 @@
             this.btnManagCoffeeTypes.Location = new System.Drawing.Point(158, 167);
             this.btnManagCoffeeTypes.Name = "btnManagCoffeeTypes";
             this.btnManagCoffeeTypes.Size = new System.Drawing.Size(192, 29);
-            this.btnManagCoffeeTypes.TabIndex = 2;
+            this.btnManagCoffeeTypes.TabIndex = 1;
             this.btnManagCoffeeTypes.Text = "Manage Coffee Types";
             this.btnManagCoffeeTypes.UseVisualStyleBackColor = true;
             this.btnManagCoffeeTypes.Click += new System.EventHandler(this.btnManagCoffeeTypes_Click);
@@ -89,7 +89,7 @@
             this.btnAddInsManagement.Location = new System.Drawing.Point(158, 217);
             this.btnAddInsManagement.Name = "btnAddInsManagement";
             this.btnAddInsManagement.Size = new System.Drawing.Size(192, 29);
-            this.btnAddInsManagement.TabIndex = 1;
+            this.btnAddInsManagement.TabIndex = 2;
             this.btnAddInsManagement.Text = "Manage Add-Ins ";
             this.btnAddInsManagement.UseVisualStyleBackColor = true;
             this.btnAddInsManagement.Click += new System.EventHandler(this.btnAddInsManagement_Click);
@@ -142,6 +142,7 @@
             this.btnGenerateReport.TabIndex = 4;
             this.btnGenerateReport.Text = "Generate Report";
             this.btnGenerateReport.UseVisualStyleBackColor = true;
+            this.btnGenerateReport.Click += new System.EventHandler(this.btnGenerateReport_Click);
             // 
             // frmHome
             // 

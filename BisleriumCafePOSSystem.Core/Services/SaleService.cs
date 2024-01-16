@@ -33,6 +33,7 @@ namespace BisleriumCafePOSSystem.Core.Services
     
 
             Member member = memberService.GetMemberByPhoneNumber(sale.PhoneNumber);
+            sale.TotalBill = CalculateInitialBill(sale);
 
             if (member != null)
             {
@@ -42,6 +43,7 @@ namespace BisleriumCafePOSSystem.Core.Services
                 
                 if (member.MembershipType == "Regular" && IsRegularEligible(member, sale.Date))
                 {
+                   
                     sale.Discount = CalculateRegularMemberDiscount(sale.TotalBill);
                 }
                 else if (member.MembershipType == "Basic" && IsEligibleForFreeCoffee(member))
@@ -56,16 +58,17 @@ namespace BisleriumCafePOSSystem.Core.Services
                 }
             }
 
-            sale.TotalBill = CalculateInitialBill(sale) - sale.Discount;
+            //sale.TotalBill = CalculateInitialBill(sale) - sale.Discount;
+            sale.TotalBill -= sale.Discount;
             SaveSale();
 
         }
-
+        
         private double CalculateRegularMemberDiscount(double totalBill)
         {
            
-            const double discountRate = 0.10;
-            return totalBill * discountRate;
+            const double DISCOUNT = 0.1;
+            return totalBill * DISCOUNT;
         }
         private double CalculateInitialBill(Sale sale)
         {
@@ -79,49 +82,50 @@ namespace BisleriumCafePOSSystem.Core.Services
         }
 
 
-        //.....
         private bool IsRegularEligible(Member member, DateTime currentDate)
         {
-            if (member.JoiningDate != null)
-            {
-                if (!DateTime.TryParse(member.JoiningDate, out DateTime joiningDate))
-                {
-                    
-                    return false;
-                }
 
-                if (joiningDate.Date == currentDate.Date)
-                {
-                    // Member is eligible on the joining date
-                    return true;
-                }
-            }
-
-            // If it's a weekend, return false
-            if (currentDate.DayOfWeek == DayOfWeek.Saturday || currentDate.DayOfWeek == DayOfWeek.Sunday)
+            
+            if (!DateTime.TryParse(member.JoiningDate, out DateTime joiningDate))
             {
+               
                 return false;
             }
 
-            // Check for a purchase on the previous business day
-            DateTime previousBusinessDay = GetPreviousBusinessDay(currentDate);
-            return member.PurchaseHistory.Any(purchaseDate => purchaseDate.Date == previousBusinessDay.Date);
-        }
-
-        private DateTime GetPreviousBusinessDay(DateTime currentDate)
-        {
-            DateTime previousDay = currentDate.AddDays(-1);
-
-            while (previousDay.DayOfWeek == DayOfWeek.Saturday || previousDay.DayOfWeek == DayOfWeek.Sunday)
+           
+            if (joiningDate.Date == currentDate.Date)
             {
-                previousDay = previousDay.AddDays(-1);
+                // Member is eligible on the joining date.
+                return true;
+            }
+            DateTime startDate = joiningDate.Date;
+            DateTime endDate = currentDate.Date;
+
+            // Check each day from joining date to current date
+            for (DateTime day = startDate; day <= endDate; day = day.AddDays(1))
+            {
+                
+                if (day.DayOfWeek == DayOfWeek.Saturday || day.DayOfWeek == DayOfWeek.Sunday)
+                {
+                    continue;
+                }
+
+                // Check if there is a purchase on this day
+                if (!member.PurchaseHistory.Any(date => date.Date == day.Date))
+                {
+                   
+                    return false;
+                }
             }
 
-            return previousDay;
+            
+            return true;
         }
 
 
-        //....
+
+
+
         private bool IsEligibleForFreeCoffee(Member member)
         {
             return member.PurchaseCount % 10 == 1;
@@ -154,6 +158,8 @@ namespace BisleriumCafePOSSystem.Core.Services
         {
             string json = JsonConvert.SerializeObject(sales, Newtonsoft.Json.Formatting.Indented);
             File.WriteAllText(filePath, json);
+
+
         }
 
         public List<Sale> LoadSales()
@@ -166,5 +172,61 @@ namespace BisleriumCafePOSSystem.Core.Services
             string json = File.ReadAllText(filePath);
             return JsonConvert.DeserializeObject<List<Sale>>(json) ?? new List<Sale>();
         }
+
+
+
+
+        public List<Sale> GetAllSales()
+        {
+            return sales;
+        }
+
+        public List<Sale> GetSalesByDate(DateTime date)
+        {
+            
+            return sales.Where(s => s.Date.Date == date.Date).ToList();
+        }
+
+        public List<Sale> GetSalesByMonth(int month, int year)
+        {
+            
+            return sales.Where(s => s.Date.Month == month && s.Date.Year == year).ToList();
+        }
+
+        private List<ReportData> AggregateData(List<Sale> filteredSales)
+        {
+            // Group the filtered sales by coffee type and add-ins
+            var groupedSales = filteredSales.GroupBy(s => new { s.CoffeeType, AddIns = string.Join(", ", s.AddIns.OrderBy(a => a)) });
+
+            // Create report data
+            var reportDataList = groupedSales.Select(group => new ReportData
+            {
+                CoffeeType = group.Key.CoffeeType,
+                AddIns = group.Key.AddIns,
+                QuantitySold = group.Sum(g => g.Quantity),
+                Revenue = group.Sum(g => g.TotalBill)
+            })
+            .OrderByDescending(rd => rd.QuantitySold) // Order by most frequently purchased
+            .Take(5) // Take top 5
+            .ToList();
+
+            return reportDataList;
+        }
+
+       
+
+
+        public List<ReportData> GenerateReportDataForSales(List<Sale> filteredSales)
+        {
+            return AggregateData(filteredSales);
+        }
+
+
+        public double CalculateTotalRevenue(List<Sale> sales)
+        {
+            return sales.Sum(s => s.TotalBill);
+        }
+
+
     }
 }
